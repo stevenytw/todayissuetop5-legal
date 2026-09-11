@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>투데이이슈 서비스 약관</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f3f4f7;
+    --surface-2: #eceef2;
+    --ink: #12141c;
+    --ink-soft: #4b4f5b;
+    --ink-faint: #767a86;
+    --accent: #a5761f;
+    --accent-strong: #7a5a1e;
+    --accent-soft: #f2e6cc;
+    --line: #dcdde3;
+    --line-strong: #c6c8d1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d0f14;
+      --surface: #171a21;
+      --surface-2: #1e222b;
+      --ink: #e9eaef;
+      --ink-soft: #a6a9b4;
+      --ink-faint: #767b88;
+      --accent: #d9a73c;
+      --accent-strong: #e9be5e;
+      --accent-soft: #2b2312;
+      --line: #262933;
+      --line-strong: #333743;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0f14;
+    --surface: #171a21;
+    --surface-2: #1e222b;
+    --ink: #e9eaef;
+    --ink-soft: #a6a9b4;
+    --ink-faint: #767b88;
+    --accent: #d9a73c;
+    --accent-strong: #e9be5e;
+    --accent-soft: #2b2312;
+    --line: #262933;
+    --line-strong: #333743;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    font-family: "Noto Sans KR", "Pretendard", -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Gothic A1", "Noto Sans KR", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  .masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--line-strong);
+    padding: 18px 0 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .masthead-word {
+    font-family: "Gothic A1", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .masthead-word a { color: inherit; text-decoration: none; display: flex; align-items: baseline; gap: 8px; }
+  .masthead-word .ko { color: var(--ink); }
+  .masthead-word .en {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .masthead-meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: right;
+    line-height: 1.6;
+  }
+  .masthead-meta a { color: var(--ink-faint); }
+
+  .titleblock { padding: 40px 0 8px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: 34px;
+    margin: 0 0 12px;
+    line-height: 1.25;
+  }
+  .lede {
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .reviewer-card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 20px 22px;
+  }
+  .reviewer-card .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin: 0 0 8px;
+  }
+  .reviewer-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-family: -apple-system, "Segoe UI", sans-serif;
+  }
+  .reviewer-card p + p { margin-top: 10px; }
+
+  .sections { margin-top: 56px; display: flex; flex-direction: column; }
+  section.item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 4px 20px;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+  }
+  section.item:last-child { border-bottom: 1px solid var(--line); }
+  .num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-faint);
+    padding-top: 3px;
+  }
+  section.item h2 { grid-column: 2; font-size: 19px; margin: 0 0 12px; }
+  section.item .body { grid-column: 2; color: var(--ink-soft); font-size: 15px; }
+  section.item .body p { margin: 0 0 12px; }
+  section.item .body p:last-child { margin-bottom: 0; }
+  section.item .body ul { margin: 10px 0 12px; padding-left: 20px; }
+  section.item .body li { margin-bottom: 6px; }
+  section.item .body strong { color: var(--ink); font-weight: 700; }
+  section.item .body a { color: var(--accent-strong); }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+    color: var(--ink-faint);
+  }
+  footer a { color: var(--ink-soft); }
+
+  @media (max-width: 520px) {
+    section.item { grid-template-columns: 32px 1fr; gap: 4px 14px; }
+    h1 { font-size: 27px; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="masthead-word">
+      <a href="./index.html">
+        <span class="ko">투데이이슈</span>
+        <span class="en">Today Issue Top5 / Top20</span>
+      </a>
+    </div>
+    <div class="masthead-meta">
+      youtube.com/@Todayissuetop20<br>
+      서비스 약관 · Terms of Service
+    </div>
+  </div>
+
+  <div class="titleblock">
+    <p class="eyebrow">Effective 2026.09.11</p>
+    <h1>서비스 약관</h1>
+    <p class="lede">
+      본 약관은 유튜브 채널 <strong style="color:var(--ink)">투데이이슈</strong>(Today Issue
+      Top5 / Top20, 이하 "채널")가 제공하는 뉴스 요약 콘텐츠 이용과 관련한 조건을
+      정합니다. 채널의 영상을 시청하거나 채널과 연동된 계정 연결 기능을 이용하는 경우
+      본 약관에 동의한 것으로 간주됩니다.
+    </p>
+
+    <div class="reviewer-card">
+      <p class="tag">Summary for reviewers</p>
+      <p>
+        Today Issue Top5/Top20 is a single-operator YouTube channel that auto-publishes
+        AI-assisted news-summary videos twice daily. These terms cover the channel's
+        content (informational only, not professional advice), source attribution,
+        and standard liability limitations. No user accounts, subscriptions, or
+        paid features exist on this channel.
+      </p>
+    </div>
+  </div>
+
+  <div class="sections">
+
+    <section class="item">
+      <div class="num">01</div>
+      <h2>서비스 소개</h2>
+      <div class="body">
+        <p>
+          투데이이슈는 매일 오전·오후 두 차례, 그 시점 기준 최신 뉴스를 자동으로
+          수집·요약하여 카드뉴스, 쇼츠, 롱폼(TOP20) 영상 형태로 제작해 게시하는
+          개인 운영 채널입니다. 회원가입, 로그인, 결제 등 별도의 사용자 계정 시스템은
+          존재하지 않으며, 콘텐츠는 YouTube·Instagram·Facebook을 통해 일반에
+          공개됩니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">02</div>
+      <h2>콘텐츠의 성격</h2>
+      <div class="body">
+        <p>
+          채널에 게시되는 영상은 공개된 보도를 자동으로 수집·요약·재구성한
+          <strong>정보 제공용 콘텐츠</strong>이며, 투자·법률·의료 등 전문적인 자문을
+          목적으로 하지 않습니다. 요약 과정에서 원문과 표현이 달라지거나 생략이
+          발생할 수 있으므로, 중요한 판단을 내리기 전에는 반드시 원 기사 및 1차
+          출처를 확인하시기 바랍니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">03</div>
+      <h2>출처 및 저작권</h2>
+      <div class="body">
+        <p>
+          영상에 인용·요약되는 뉴스의 저작권은 각 원 언론사 및 발행사에 있습니다.
+          배경 이미지·영상 소재는 Pexels, Unsplash 등 라이선스가 허용하는 소재만
+          사용합니다. 채널 고유의 편집 구성, 그래픽, 로고("투데이이슈", "TODAY ISSUE
+          TOP20" 등)에 대한 권리는 채널 운영자에게 있으며, 사전 동의 없는 상업적
+          재배포·재가공을 금지합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">04</div>
+      <h2>정확성에 대한 면책</h2>
+      <div class="body">
+        <p>
+          콘텐츠는 자동화된 수집·요약 과정을 거치므로 오탈자, 시점 오류, 사실관계
+          누락이 발생할 수 있습니다. 채널 운영자는 콘텐츠의 완전성·정확성·최신성을
+          보증하지 않으며, 콘텐츠 이용으로 발생한 직접·간접 손해에 대해 법이 허용하는
+          범위 내에서 책임을 지지 않습니다. 오류를 발견하신 경우 아래 연락처로
+          알려주시면 반영하겠습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">05</div>
+      <h2>계정 연동 기능 이용 시 준수사항</h2>
+      <div class="body">
+        <p>
+          채널 운영을 위해 Google OAuth 등 제3자 인증을 이용하는 경우가 있으며, 이는
+          채널 운영자 본인의 계정에 한해 콘텐츠를 업로드하기 위한 용도로만 사용됩니다
+          (자세한 내용은 <a href="./privacy.html">개인정보처리방침</a> 참고).
+          시청자·구독자가 별도로 계정을 연동하거나 개인정보를 제공하는 절차는
+          존재하지 않습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">06</div>
+      <h2>서비스 변경 및 중단</h2>
+      <div class="body">
+        <p>
+          채널 운영자는 게시 주기, 콘텐츠 형식, 플랫폼 구성 등을 사전 고지 없이
+          변경하거나 일부 또는 전부를 중단할 수 있습니다. 이는 운영상의 판단(플랫폼
+          정책 변경, 리소스 상황 등)에 따른 것이며, 시청자에게 별도로 통지할 의무를
+          지지 않습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">07</div>
+      <h2>약관 변경</h2>
+      <div class="body">
+        <p>
+          본 약관은 운영 방식 변경에 따라 개정될 수 있으며, 개정 시 이 페이지의
+          시행일이 함께 업데이트됩니다. 개정된 약관은 게시와 동시에 효력이 발생합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">08</div>
+      <h2>준거법 및 문의</h2>
+      <div class="body">
+        <p>
+          본 약관은 대한민국 법령에 따라 해석됩니다. 약관 또는 콘텐츠 관련 문의,
+          정정 요청은 아래 연락처로 받습니다.
+        </p>
+        <p>
+          문의: <a href="mailto:steven.ytw@gmail.com">steven.ytw@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>투데이이슈 · Today Issue Top5 / Top20</span>
+    <span>최종 수정: 2026-09-11</span>
+  </footer>
+
+</div>
+</body>
+</html>

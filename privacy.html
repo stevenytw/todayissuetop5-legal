@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>투데이이슈 개인정보처리방침</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f3f4f7;
+    --surface-2: #eceef2;
+    --ink: #12141c;
+    --ink-soft: #4b4f5b;
+    --ink-faint: #767a86;
+    --accent: #a5761f;
+    --accent-strong: #7a5a1e;
+    --accent-soft: #f2e6cc;
+    --line: #dcdde3;
+    --line-strong: #c6c8d1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d0f14;
+      --surface: #171a21;
+      --surface-2: #1e222b;
+      --ink: #e9eaef;
+      --ink-soft: #a6a9b4;
+      --ink-faint: #767b88;
+      --accent: #d9a73c;
+      --accent-strong: #e9be5e;
+      --accent-soft: #2b2312;
+      --line: #262933;
+      --line-strong: #333743;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0f14;
+    --surface: #171a21;
+    --surface-2: #1e222b;
+    --ink: #e9eaef;
+    --ink-soft: #a6a9b4;
+    --ink-faint: #767b88;
+    --accent: #d9a73c;
+    --accent-strong: #e9be5e;
+    --accent-soft: #2b2312;
+    --line: #262933;
+    --line-strong: #333743;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    font-family: "Noto Sans KR", "Pretendard", -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Gothic A1", "Noto Sans KR", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  /* ---- masthead ---- */
+  .masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--line-strong);
+    padding: 18px 0 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .masthead-word {
+    font-family: "Gothic A1", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .masthead-word a { color: inherit; text-decoration: none; display: flex; align-items: baseline; gap: 8px; }
+  .masthead-word .ko { color: var(--ink); }
+  .masthead-word .en {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .masthead-meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: right;
+    line-height: 1.6;
+  }
+  .masthead-meta a { color: var(--ink-faint); }
+
+  /* ---- title block ---- */
+  .titleblock { padding: 40px 0 8px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: 34px;
+    margin: 0 0 12px;
+    line-height: 1.25;
+  }
+  .lede {
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  /* ---- reviewer summary card ---- */
+  .reviewer-card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 20px 22px;
+  }
+  .reviewer-card .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin: 0 0 8px;
+  }
+  .reviewer-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-family: -apple-system, "Segoe UI", sans-serif;
+  }
+  .reviewer-card p + p { margin-top: 10px; }
+  .reviewer-card .scope-list {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .reviewer-card .scope-list li {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    background: var(--surface-2);
+    border-radius: 4px;
+    padding: 6px 10px;
+    width: fit-content;
+  }
+
+  /* ---- sections ---- */
+  .sections {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+  section.item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 4px 20px;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+  }
+  section.item:last-child { border-bottom: 1px solid var(--line); }
+  .num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-faint);
+    padding-top: 3px;
+  }
+  section.item h2 {
+    grid-column: 2;
+    font-size: 19px;
+    margin: 0 0 12px;
+  }
+  section.item .body {
+    grid-column: 2;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  section.item .body p { margin: 0 0 12px; }
+  section.item .body p:last-child { margin-bottom: 0; }
+  section.item .body ul {
+    margin: 10px 0 12px;
+    padding-left: 20px;
+  }
+  section.item .body li { margin-bottom: 6px; }
+  section.item .body strong { color: var(--ink); font-weight: 700; }
+  section.item .body code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+  section.item .body a { color: var(--accent-strong); }
+
+  .no-collect {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border-radius: 4px;
+    padding: 3px 9px;
+    margin-bottom: 12px;
+  }
+
+  /* ---- footer ---- */
+  footer {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+    color: var(--ink-faint);
+  }
+  footer a { color: var(--ink-soft); }
+
+  @media (max-width: 520px) {
+    section.item { grid-template-columns: 32px 1fr; gap: 4px 14px; }
+    h1 { font-size: 27px; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="masthead-word">
+      <a href="./index.html">
+        <span class="ko">투데이이슈</span>
+        <span class="en">Today Issue Top5 / Top20</span>
+      </a>
+    </div>
+    <div class="masthead-meta">
+      youtube.com/@Todayissuetop20<br>
+      개인정보처리방침 · Privacy Policy
+    </div>
+  </div>
+
+  <div class="titleblock">
+    <p class="eyebrow">Effective 2026.09.11</p>
+    <h1>개인정보처리방침</h1>
+    <p class="lede">
+      본 방침은 유튜브 채널 <strong style="color:var(--ink)">투데이이슈</strong>(Today Issue Top5 / Top20)가
+      운영하는 자동 업로드 프로그램이 Google 계정 정보와 YouTube API 서비스를 어떻게,
+      그리고 왜 사용하는지 설명합니다.
+    </p>
+
+    <div class="reviewer-card">
+      <p class="tag">Summary for reviewers</p>
+      <p>
+        This app is a single-operator automation pipeline that publishes pre-produced,
+        script-generated news-summary videos to one YouTube channel owned by the developer.
+        It does not collect, view, or process any data belonging to end users or viewers.
+      </p>
+      <p>
+        The only Google data accessed is the developer's own OAuth grant, used solely to
+        upload a video file and set its title, description, tags and thumbnail on the
+        developer's own channel.
+      </p>
+      <ul class="scope-list">
+        <li>https://www.googleapis.com/auth/youtube.upload</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sections">
+
+    <section class="item">
+      <div class="num">01</div>
+      <h2>서비스 개요</h2>
+      <div class="body">
+        <p>
+          투데이이슈는 매일 두 차례(오전 6시 50분, 오후 6시 50분) 그날의 주요 뉴스를
+          요약한 카드뉴스·쇼츠·롱폼 영상을 자동으로 생성하여 Instagram, Facebook,
+          YouTube에 게시하는 개인 운영 콘텐츠 파이프라인입니다.
+        </p>
+        <p>
+          이 문서가 대상으로 하는 프로그램(이하 "본 앱")은 그중 YouTube 업로드 단계를
+          담당하며, 렌더링이 끝난 영상 파일을 개발자 본인의 채널에 예약 비공개로
+          업로드하는 역할만 수행합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">02</div>
+      <h2>수집하는 개인정보</h2>
+      <div class="body">
+        <span class="no-collect">수집하는 최종 사용자 개인정보 없음</span>
+        <p>
+          본 앱은 시청자·구독자 등 <strong>최종 사용자로부터 어떠한 개인정보도 수집하지
+          않습니다.</strong> 회원가입, 로그인, 쿠키 기반 추적, 분석 SDK를 사용하지
+          않으며, 사용자를 대상으로 한 별도의 데이터베이스나 프로필도 운영하지 않습니다.
+        </p>
+        <p>
+          본 앱이 다루는 유일한 계정 정보는 <strong>개발자 본인</strong>이 Google
+          OAuth 동의 화면을 통해 직접 부여한 접근 권한(refresh token) 하나뿐입니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">03</div>
+      <h2>Google 사용자 데이터 접근 및 사용 방식</h2>
+      <div class="body">
+        <p>
+          본 앱은 아래 단일 범위(scope)만 요청합니다.
+        </p>
+        <ul>
+          <li><code>https://www.googleapis.com/auth/youtube.upload</code> — 렌더링된
+            영상을 업로드하고, 제목·설명·태그·공개 예약 시각·썸네일을 설정하는 용도로만
+            사용됩니다.</li>
+        </ul>
+        <p>
+          이 권한으로 접근하는 대상은 <strong>개발자 본인이 소유한 채널</strong>이
+          유일하며, 다른 사용자의 채널·댓글·구독자 목록·분석 데이터 등은 조회하거나
+          수집하지 않습니다. 업로드된 영상의 공개 여부는 항상 "비공개"로 시작하여
+          지정된 시각에 자동으로 공개 전환되도록 예약되며, 이 전환 역시 YouTube
+          자체 기능(publishAt)을 통해 이루어집니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">04</div>
+      <h2>데이터 저장 및 보안</h2>
+      <div class="body">
+        <p>
+          OAuth 클라이언트 ID·시크릿·refresh token은 GitHub Actions의 암호화된
+          Secrets 저장소에만 보관되며, 코드 저장소나 로그, 채팅 등 어디에도 평문으로
+          노출되지 않습니다. 이 값에 접근할 수 있는 주체는 저장소 관리자(개발자
+          본인)로 한정됩니다.
+        </p>
+        <p>
+          자동화 서버(GitHub Actions 러너)는 매 실행마다 새로 생성되고 종료되며,
+          영상 파일과 임시 자격 증명은 실행이 끝나면 함께 폐기됩니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">05</div>
+      <h2>제3자 제공</h2>
+      <div class="body">
+        <p>
+          본 앱은 어떠한 개인정보도 제3자에게 판매, 대여, 공유, 양도하지 않습니다.
+          영상 렌더링 과정에서 Cloudinary(영상·이미지 임시 저장), Pexels·Unsplash
+          (배경 소재)와 같은 외부 서비스를 이용하지만, 이들에 전달되는 데이터는
+          이미 완성된 콘텐츠 자산이며 최종 사용자의 개인정보가 아닙니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">06</div>
+      <h2>Google API 서비스 사용자 데이터 정책 준수</h2>
+      <div class="body">
+        <p>
+          본 앱의 Google 사용자 데이터 사용은
+          <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 서비스 사용자 데이터 정책</a>을
+          준수하며, 이 중 제한적 사용(Limited Use) 요건을 포함합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">07</div>
+      <h2>접근 권한 철회</h2>
+      <div class="body">
+        <p>
+          개발자는 언제든지 Google 계정 →
+          <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">보안 → 타사 앱 및 서비스</a>
+          에서 본 앱의 연결을 해제할 수 있으며, 해제 즉시 저장된 refresh token은
+          무효화되어 더 이상 업로드에 사용될 수 없습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="num">08</div>
+      <h2>정책 변경 및 문의</h2>
+      <div class="body">
+        <p>
+          본 방침의 내용은 서비스 운영 방식 변경에 따라 갱신될 수 있으며, 변경 시
+          이 페이지의 시행일이 함께 업데이트됩니다.
+        </p>
+        <p>
+          문의: <a href="mailto:steven.ytw@gmail.com">steven.ytw@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>투데이이슈 · Today Issue Top5 / Top20</span>
+    <span>최종 수정: 2026-09-11</span>
+  </footer>
+
+</div>
+</body>
+</html>
